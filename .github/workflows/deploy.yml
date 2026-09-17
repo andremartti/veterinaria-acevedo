@@ -1,7 +1,9 @@
 # Publica el sitio en GitHub Pages en cada envío a la rama principal.
 #
-# Requisito, una sola vez: en el repositorio, Settings → Pages →
-# «Build and deployment» → Source: «GitHub Actions».
+# El propio flujo activa Pages la primera vez (`enablement: true`), así que no
+# hace falta configurarlo a mano. Requisito: el repositorio debe ser público, o
+# la cuenta tener plan Pro/Team/Enterprise —GitHub Pages no publica
+# repositorios privados en el plan gratuito—.
 #
 # La ruta base y la dirección pública se toman de la propia configuración de
 # Pages, así que este archivo sigue funcionando aunque el repositorio cambie de
@@ -37,9 +39,12 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - name: Leer la configuración de Pages
+      - name: Activar y leer la configuración de Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Crea el sitio de Pages si todavía no existe.
+          enablement: true
 
       - name: Instalar dependencias
         run: npm ci
