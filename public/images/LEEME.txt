@@ -1,0 +1,18 @@
+Coloca aquí las fotografías de la clínica.
+
+Luego escribe la ruta en `photos`, dentro de src/data/business.ts. Por ejemplo,
+si guardas el archivo como `fachada.jpg`:
+
+    hero: {
+      src: '/images/fachada.jpg',
+      alt: 'Fachada de Veterinaria Acevedo en Gastro Plaza',
+    },
+
+Recomendaciones
+  · Hero: horizontal, 1600 px de ancho o más.
+  · Resto: cuadradas, alrededor de 1000 x 1000 px.
+  · Formato JPG o WebP, comprimidas para web.
+  · Describe siempre la imagen en `alt`: ayuda a los lectores de pantalla y a Google.
+
+Mientras no haya fotografías, el sitio muestra una composición con los colores
+de la marca, por lo que nunca aparecen imágenes rotas.
