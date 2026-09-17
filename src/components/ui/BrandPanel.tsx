@@ -1,6 +1,6 @@
 import { useId } from 'react';
 
-type Tone = 'deep' | 'soft' | 'mint';
+type Tone = 'deep' | 'soft' | 'mist';
 
 type BrandPanelProps = {
   tone?: Tone;
@@ -25,36 +25,36 @@ type Palette = {
 
 const palettes: Record<Tone, Palette> = {
   deep: {
-    from: '#0a2c24',
-    via: '#164c3e',
-    to: '#21906f',
-    glow: '#7fd4b7',
-    shade: '#06201a',
+    from: '#042c53',
+    via: '#0a4783',
+    to: '#185fa5',
+    glow: '#85b7eb',
+    shade: '#021a33',
     mark: '#ffffff',
     markOpacity: 0.15,
     ring: '#ffffff',
     ringOpacity: 0.2,
   },
-  mint: {
-    from: '#a9d8c3',
-    via: '#e9f5ef',
-    to: '#7cc7a9',
+  mist: {
+    from: '#a8c9ea',
+    via: '#eaf2fb',
+    to: '#7fb2e6',
     glow: '#ffffff',
-    shade: '#164c3e',
-    mark: '#0f3b30',
+    shade: '#0a4783',
+    mark: '#042c53',
     markOpacity: 0.14,
-    ring: '#0f3b30',
+    ring: '#042c53',
     ringOpacity: 0.18,
   },
   soft: {
-    from: '#f1e9dc',
-    via: '#fcfaf6',
-    to: '#bfe0d1',
+    from: '#efece3',
+    via: '#faf9f5',
+    to: '#bcd8f2',
     glow: '#ffffff',
-    shade: '#6b5f4e',
-    mark: '#1a7a5e',
+    shade: '#63615a',
+    mark: '#185fa5',
     markOpacity: 0.15,
-    ring: '#6b5f4e',
+    ring: '#63615a',
     ringOpacity: 0.16,
   },
 };

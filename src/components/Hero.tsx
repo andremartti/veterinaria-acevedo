@@ -8,15 +8,15 @@ const ratingLabel = business.reviews.rating.toFixed(1);
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative isolate overflow-hidden bg-sand-50">
+    <section id="inicio" className="relative isolate overflow-hidden bg-cream-100">
       {/* Atmósfera de fondo */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-40 -left-32 size-[34rem] rounded-full bg-mint-200/55 blur-3xl motion-safe:animate-float-slow" />
+        <div className="absolute -top-40 -left-32 size-[34rem] rounded-full bg-mist-200/55 blur-3xl motion-safe:animate-float-slow" />
         <div
-          className="absolute -right-40 top-24 size-[30rem] rounded-full bg-jade-300/25 blur-3xl motion-safe:animate-float-slow"
+          className="absolute -right-40 top-24 size-[30rem] rounded-full bg-brand-300/25 blur-3xl motion-safe:animate-float-slow"
           style={{ animationDelay: '-6s' }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-sand-100/70" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-mist-50/70" />
       </div>
 
       <div className="container-page pt-[calc(var(--nav-h)+2.5rem)] pb-20 sm:pt-[calc(var(--nav-h)+4rem)] lg:pb-28 xl:pt-[calc(var(--nav-h)+5.5rem)]">
@@ -24,14 +24,14 @@ export function Hero() {
           {/* ── Columna de contenido ───────────────────────────────────── */}
           <div className="lg:col-span-6 xl:col-span-6">
             <p
-              className="animate-fade-up inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-forest-900/10 bg-white/70 py-2 pr-4 pl-2.5 text-[0.8125rem] font-semibold text-forest-800 shadow-[var(--shadow-soft)] backdrop-blur-sm"
+              className="animate-fade-up inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-navy-900/10 bg-white/70 py-2 pr-4 pl-2.5 text-[0.8125rem] font-semibold text-navy-800 shadow-[var(--shadow-soft)] backdrop-blur-sm"
               style={{ '--reveal-delay': '0ms' } as React.CSSProperties}
             >
-              <span className="grid size-6 place-items-center rounded-full bg-forest-800 text-mint-100">
+              <span className="grid size-6 place-items-center rounded-full bg-navy-800 text-mist-100">
                 <Icon name="paw" size={13} />
               </span>
               <span className="whitespace-nowrap">{business.name}</span>
-              <span aria-hidden="true" className="hidden text-sand-300 sm:inline">
+              <span aria-hidden="true" className="hidden text-cream-500 sm:inline">
                 ·
               </span>
               <span className="font-medium whitespace-nowrap text-ink-muted">
@@ -40,7 +40,7 @@ export function Hero() {
             </p>
 
             <h1
-              className="animate-fade-up mt-7 text-[clamp(2.35rem,6vw,4.15rem)] leading-[1.06] font-semibold text-forest-900"
+              className="animate-fade-up mt-7 text-[clamp(2.35rem,6vw,4.15rem)] leading-[1.06] font-semibold text-navy-900"
               style={{ '--reveal-delay': '90ms' } as React.CSSProperties}
             >
               Cuidamos a quienes forman parte de tu familia.
@@ -73,7 +73,7 @@ export function Hero() {
 
             {/* Indicador de confianza */}
             <div
-              className="animate-fade-up mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-forest-900/10 pt-7"
+              className="animate-fade-up mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-navy-900/10 pt-7"
               style={{ '--reveal-delay': '340ms' } as React.CSSProperties}
             >
               <div className="flex items-center gap-2.5">
@@ -81,7 +81,7 @@ export function Hero() {
                 <span className="sr-only">
                   Calificación de {ratingLabel} sobre 5 en Google
                 </span>
-                <span aria-hidden="true" className="text-[0.9375rem] font-bold text-forest-900">
+                <span aria-hidden="true" className="text-[0.9375rem] font-bold text-navy-900">
                   {ratingLabel}
                 </span>
               </div>
@@ -106,32 +106,32 @@ export function Hero() {
                 {/* Velo superior: asegura el contraste de la etiqueta */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-forest-950/55 to-transparent"
+                  className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-navy-950/55 to-transparent"
                 />
 
-                <p className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-white/12 px-3.5 py-1.5 text-[0.75rem] font-semibold tracking-[0.1em] text-mint-100 uppercase ring-1 ring-white/20 backdrop-blur-md sm:top-7 sm:left-7">
+                <p className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-navy-950/65 px-3.5 py-1.5 text-[0.75rem] font-semibold tracking-[0.1em] text-white uppercase ring-1 ring-white/25 backdrop-blur-md sm:top-7 sm:left-7">
                   <Icon name="stethoscope" size={14} />
                   Perros y gatos
                 </p>
               </div>
 
               {/* Tarjeta flotante: ubicación */}
-              <div className="absolute -top-5 right-4 hidden items-center gap-3 rounded-2xl border border-forest-900/8 bg-white/95 px-4 py-3 shadow-[var(--shadow-lift)] backdrop-blur-sm sm:flex lg:-right-5">
-                <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-mint-100 text-forest-800">
+              <div className="absolute -top-5 right-4 hidden items-center gap-3 rounded-2xl border border-navy-900/8 bg-white/95 px-4 py-3 shadow-[var(--shadow-lift)] backdrop-blur-sm sm:flex lg:-right-5">
+                <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-mist-100 text-navy-800">
                   <Icon name="pin" size={18} />
                 </span>
                 <span className="text-[0.8125rem] leading-tight">
-                  <span className="block font-semibold text-forest-900">Gastro Plaza</span>
+                  <span className="block font-semibold text-navy-900">Gastro Plaza</span>
                   <span className="text-ink-muted">Puma El Sauce</span>
                 </span>
               </div>
 
               {/* Tarjeta flotante: reseñas */}
-              <div className="absolute -bottom-5 left-4 flex items-center gap-3.5 rounded-2xl border border-forest-900/8 bg-white/95 px-4 py-3.5 shadow-[var(--shadow-lift)] backdrop-blur-sm sm:px-5 lg:-left-6">
-                <span className="font-display text-[1.75rem] leading-none font-semibold text-forest-900">
+              <div className="absolute -bottom-5 left-4 flex items-center gap-3.5 rounded-2xl border border-navy-900/8 bg-white/95 px-4 py-3.5 shadow-[var(--shadow-lift)] backdrop-blur-sm sm:px-5 lg:-left-6">
+                <span className="font-display text-[1.75rem] leading-none font-semibold text-navy-900">
                   {ratingLabel}
                 </span>
-                <span className="h-9 w-px bg-sand-200" aria-hidden="true" />
+                <span className="h-9 w-px bg-cream-200" aria-hidden="true" />
                 <span className="leading-tight">
                   <Stars rating={business.reviews.rating} size={13} />
                   <span className="mt-1 block text-[0.75rem] font-medium text-ink-muted">

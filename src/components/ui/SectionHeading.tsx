@@ -33,17 +33,17 @@ export function SectionHeading({
         <p
           className={`flex items-center gap-2.5 text-[0.6875rem] font-bold tracking-[0.18em] uppercase ${
             isCentered ? 'justify-center' : ''
-          } ${isDark ? 'text-jade-300' : 'text-jade-700'}`}
+          } ${isDark ? 'text-brand-300' : 'text-brand-700'}`}
         >
           <span
             aria-hidden="true"
-            className={`h-px w-6 ${isDark ? 'bg-jade-300/50' : 'bg-jade-700/35'}`}
+            className={`h-px w-6 ${isDark ? 'bg-brand-300/50' : 'bg-brand-700/35'}`}
           />
           {eyebrow}
           {isCentered ? (
             <span
               aria-hidden="true"
-              className={`h-px w-6 ${isDark ? 'bg-jade-300/50' : 'bg-jade-700/35'}`}
+              className={`h-px w-6 ${isDark ? 'bg-brand-300/50' : 'bg-brand-700/35'}`}
             />
           ) : null}
         </p>
@@ -53,7 +53,7 @@ export function SectionHeading({
         <h2
           id={id}
           className={`mt-4 text-[clamp(1.85rem,4.4vw,3rem)] leading-[1.1] font-semibold ${
-            isDark ? 'text-sand-50' : 'text-forest-900'
+            isDark ? 'text-cream-50' : 'text-navy-900'
           }`}
         >
           {title}
@@ -64,7 +64,7 @@ export function SectionHeading({
         <Reveal delay={160}>
           <p
             className={`mt-5 text-[1.0625rem] leading-relaxed ${
-              isDark ? 'text-mint-200/85' : 'text-ink-soft'
+              isDark ? 'text-mist-200/85' : 'text-ink-soft'
             }`}
           >
             {lead}

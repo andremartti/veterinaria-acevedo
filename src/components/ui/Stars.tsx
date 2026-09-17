@@ -16,7 +16,7 @@ export function Stars({
   rating,
   size = 16,
   className = 'text-amber-500',
-  trackClassName = 'text-sand-300',
+  trackClassName = 'text-cream-300',
 }: StarsProps) {
   const percentage = Math.max(0, Math.min(1, rating / STAR_COUNT)) * 100;
   const row = (extra: string) =>

@@ -4,17 +4,20 @@ import { Button } from './ui/Button';
 import { Icon } from './ui/Icon';
 import { Logo } from './ui/Logo';
 
-/** Barra de navegación fija, con menú desplegable en móvil y sección activa. */
+/**
+ * Barra de navegación fija. Sobre el hero es transparente; al desplazarse (o al
+ * abrir el menú) se vuelve azul marino, el color de encabezado de la marca.
+ */
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('#inicio');
-  const panelRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => setIsOpen(false), []);
+  const isSolid = isScrolled || isOpen;
 
-  /* Sombra y fondo sólido en cuanto la página se desplaza */
+  /* Fondo sólido en cuanto la página se desplaza */
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24);
     onScroll();
@@ -78,8 +81,8 @@ export function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ease-[var(--ease-out-soft)] ${
-        isScrolled || isOpen
-          ? 'border-b border-forest-900/8 bg-sand-50/85 shadow-[0_1px_24px_-12px_rgb(20_32_27/0.35)] backdrop-blur-xl'
+        isSolid
+          ? 'border-b border-white/10 bg-navy-900/95 shadow-[0_2px_28px_-12px_rgb(2_26_51/0.7)] backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -90,7 +93,7 @@ export function Navbar() {
             className="-m-2 rounded-2xl p-2 transition-opacity duration-300 hover:opacity-80"
             aria-label={`${business.name} — Ir al inicio`}
           >
-            <Logo />
+            <Logo tone={isSolid ? 'dark' : 'light'} />
           </a>
 
           {/* Enlaces — escritorio */}
@@ -103,15 +106,21 @@ export function Navbar() {
                     href={link.href}
                     aria-current={isActive ? 'true' : undefined}
                     className={`relative rounded-full px-4 py-2.5 text-[0.9375rem] font-medium transition-colors duration-300 ${
-                      isActive ? 'text-forest-900' : 'text-ink-soft hover:text-forest-900'
+                      isSolid
+                        ? isActive
+                          ? 'text-white'
+                          : 'text-mist-200/85 hover:text-white'
+                        : isActive
+                          ? 'text-navy-900'
+                          : 'text-ink-soft hover:text-navy-900'
                     }`}
                   >
                     {link.label}
                     <span
                       aria-hidden="true"
-                      className={`absolute inset-x-4 -bottom-0.5 h-px origin-center bg-jade-600 transition-transform duration-400 ease-[var(--ease-out-soft)] ${
-                        isActive ? 'scale-x-100' : 'scale-x-0'
-                      }`}
+                      className={`absolute inset-x-4 -bottom-0.5 h-px origin-center transition-transform duration-400 ease-[var(--ease-out-soft)] ${
+                        isSolid ? 'bg-brand-300' : 'bg-brand-600'
+                      } ${isActive ? 'scale-x-100' : 'scale-x-0'}`}
                     />
                   </a>
                 </li>
@@ -123,12 +132,17 @@ export function Navbar() {
             {/* Los envoltorios controlan la visibilidad: aplicar `hidden` al
                 propio botón chocaría con su `display` base. */}
             <span className="hidden md:contents lg:hidden xl:contents">
-              <Button href={business.telHref} variant="ghost" size="sm" icon="phone">
+              <Button
+                href={business.telHref}
+                variant={isSolid ? 'ghostOnDark' : 'ghost'}
+                size="sm"
+                icon="phone"
+              >
                 {business.phone.display}
               </Button>
             </span>
             <span className="hidden sm:contents">
-              <Button href="#contacto" variant="primary" size="sm">
+              <Button href="#contacto" variant={isSolid ? 'onDark' : 'primary'} size="sm">
                 Agendar consulta
               </Button>
             </span>
@@ -141,13 +155,13 @@ export function Navbar() {
               aria-expanded={isOpen}
               aria-controls="menu-movil"
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-              className="relative grid size-11 place-items-center rounded-full border border-forest-900/12 bg-white/70 text-forest-900 transition-colors duration-300 hover:bg-white lg:hidden"
+              className={`grid size-11 place-items-center rounded-full border transition-colors duration-300 lg:hidden ${
+                isSolid
+                  ? 'border-white/25 bg-white/10 text-white hover:bg-white/20'
+                  : 'border-navy-900/12 bg-white/70 text-navy-900 hover:bg-white'
+              }`}
             >
-              <Icon
-                name={isOpen ? 'close' : 'menu'}
-                size={20}
-                className="transition-transform duration-300 ease-[var(--ease-out-soft)]"
-              />
+              <Icon name={isOpen ? 'close' : 'menu'} size={20} />
             </button>
           </div>
         </div>
@@ -156,9 +170,8 @@ export function Navbar() {
       {/* Panel desplegable — móvil */}
       <div
         id="menu-movil"
-        ref={panelRef}
         inert={!isOpen}
-        className={`overflow-hidden border-t border-forest-900/8 bg-sand-50 transition-[max-height,opacity] duration-500 ease-[var(--ease-out-soft)] lg:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-navy-900 transition-[max-height,opacity] duration-500 ease-[var(--ease-out-soft)] lg:hidden ${
           isOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -170,28 +183,28 @@ export function Navbar() {
                   href={link.href}
                   onClick={close}
                   style={{ transitionDelay: isOpen ? `${80 + index * 45}ms` : '0ms' }}
-                  className={`flex items-center justify-between border-b border-forest-900/8 py-4 font-display text-xl font-semibold text-forest-900 transition-all duration-500 ease-[var(--ease-out-soft)] ${
+                  className={`font-display flex items-center justify-between border-b border-white/10 py-4 text-xl font-semibold text-white transition-all duration-500 ease-[var(--ease-out-soft)] ${
                     isOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
                   }`}
                 >
                   {link.label}
-                  <Icon name="arrowUpRight" size={18} className="text-jade-600" />
+                  <Icon name="arrowUpRight" size={18} className="text-brand-300" />
                 </a>
               </li>
             ))}
           </ul>
 
           <div className="mt-6 grid gap-3">
-            <Button href="#contacto" onClick={close} variant="primary" size="lg" icon="calendar">
+            <Button href="#contacto" onClick={close} variant="onDark" size="lg" icon="calendar">
               Agendar consulta
             </Button>
-            <Button href={business.telHref} variant="outline" size="lg" icon="phone">
+            <Button href={business.telHref} variant="onDarkGhost" size="lg" icon="phone">
               Llamar: {business.phone.display}
             </Button>
           </div>
 
-          <p className="mt-6 flex items-start gap-2.5 text-sm leading-relaxed text-ink-muted">
-            <Icon name="pin" size={18} className="mt-0.5 shrink-0 text-jade-600" />
+          <p className="mt-6 flex items-start gap-2.5 text-sm leading-relaxed text-mist-200/80">
+            <Icon name="pin" size={18} className="mt-0.5 shrink-0 text-brand-300" />
             <span>
               {business.address.venue}
               <br />

@@ -191,36 +191,56 @@ export const advantages: Advantage[] = [
 ];
 
 /* ── Fotografías ────────────────────────────────────────────────────────────
- * El sitio funciona sin fotografías: mientras `src` esté vacío se muestra una
- * composición gráfica diseñada con los colores de la marca.
+ * Estas son las fotografías reales de la clínica. Las versiones `.webp` y
+ * `.jpg` de `public/images/` se prepararon a partir de los archivos guardados
+ * en la carpeta `fotos-originales/` del proyecto.
  *
- * PARA USAR LAS FOTOS REALES DE LA CLÍNICA:
- *   1. Copia las imágenes dentro de la carpeta `public/images/`.
- *   2. Escribe la ruta en `src`, por ejemplo: src: '/images/fachada.jpg'.
- *   3. Ajusta el texto `alt` describiendo lo que aparece en la foto
- *      (importante para accesibilidad y para Google).
+ * PARA CAMBIAR UNA FOTOGRAFÍA:
+ *   1. Copia la nueva imagen dentro de `public/images/`.
+ *   2. Escribe su ruta en `src`, por ejemplo: src: '/images/fachada.jpg'.
+ *   3. Borra las líneas `webp`, `width` y `height` de esa foto (son opcionales
+ *      y sólo aplican al archivo anterior).
+ *   4. Ajusta el texto `alt` describiendo lo que aparece en la foto: es lo que
+ *      leen los lectores de pantalla y lo que entiende Google.
  *
- * Recomendación: fotografías horizontales de al menos 1600 px de ancho para
- * el hero, y cuadradas de 1000 px para el resto.
+ * Si dejas `src` vacío, el sitio muestra una composición gráfica con los
+ * colores de la marca en lugar de un hueco roto.
  * ------------------------------------------------------------------------- */
 export type Photo = {
   /** Ruta de la imagen dentro de `public/`. Vacío = se usa la ilustración. */
   src: string;
   /** Descripción de la imagen para lectores de pantalla y buscadores. */
   alt: string;
+  /** Opcional: misma imagen en WebP. El navegador la prefiere por ser más liviana. */
+  webp?: string;
+  /** Opcional: medidas reales en píxeles, para reservar el espacio y evitar saltos. */
+  width?: number;
+  height?: number;
+  /** Opcional: encuadre al recortar, por ejemplo '50% 38%' para subir el encuadre. */
+  position?: string;
 };
 
 export const photos = {
   hero: {
-    src: '', // ✏️ EDITABLE — ej. '/images/hero.jpg'
-    alt: `Mascota atendida en ${business.name}, ${business.address.locality}`,
+    src: '/images/hero-consulta.jpg', // ✏️ EDITABLE
+    webp: '/images/hero-consulta.webp',
+    width: 1100,
+    height: 1467,
+    position: '50% 38%',
+    alt: `Médico veterinario de ${business.name} sosteniendo a un cachorro sobre la mesa de consulta`,
   },
   aboutMain: {
-    src: '', // ✏️ EDITABLE — ej. '/images/clinica.jpg'
-    alt: `Interior de ${business.name}`,
+    src: '/images/revision-clinica.jpg', // ✏️ EDITABLE
+    webp: '/images/revision-clinica.webp',
+    width: 800,
+    height: 824,
+    alt: `Revisión de un perro durante una consulta en ${business.name}`,
   },
   aboutSecondary: {
-    src: '', // ✏️ EDITABLE — ej. '/images/consulta.jpg'
-    alt: 'Momento de consulta veterinaria',
+    src: '/images/veterinario-retrato.jpg', // ✏️ EDITABLE
+    webp: '/images/veterinario-retrato.webp',
+    width: 640,
+    height: 640,
+    alt: `Médico veterinario de ${business.name} con bata y estetoscopio`,
   },
 } satisfies Record<string, Photo>;

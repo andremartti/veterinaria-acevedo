@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Veterinaria Acevedo">
-  <rect width="64" height="64" rx="16" fill="#0f3b30"/>
-  <g fill="#cfe9dd" transform="translate(8 8) scale(2)">
+  <rect width="64" height="64" rx="16" fill="#042c53"/>
+  <g fill="#c5ddf5" transform="translate(8 8) scale(2)">
     <ellipse cx="6.1" cy="10.6" rx="2.15" ry="2.85" transform="rotate(-22 6.1 10.6)"/>
     <ellipse cx="10.4" cy="7.5" rx="2.25" ry="3.05" transform="rotate(-7 10.4 7.5)"/>
     <ellipse cx="15.2" cy="7.9" rx="2.25" ry="3.05" transform="rotate(12 15.2 7.9)"/>

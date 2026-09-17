@@ -77,14 +77,28 @@ Se pueden añadir o quitar tarjetas libremente: la cuadrícula se reacomoda sola
 
 ### Fotografías
 
-El sitio **funciona sin fotografías**. Mientras `src` esté vacío se dibuja una
-composición gráfica con los colores de la marca, así que nunca aparecen imágenes
-rotas ni marcos vacíos.
+El sitio usa tres fotografías reales de la clínica:
 
-Para usar las fotos reales de la clínica:
+| Dónde aparece | Archivo | Contenido |
+| --- | --- | --- |
+| Hero | `hero-consulta` | Consulta con un cachorro sobre la mesa |
+| Nosotros (principal) | `revision-clinica` | Revisión de un perro en la clínica |
+| Nosotros (retrato) | `veterinario-retrato` | Retrato del médico veterinario |
 
-1. Copia las imágenes en `public/images/`.
-2. Escribe la ruta y una descripción en `photos`, dentro de `src/data/business.ts`:
+De cada una hay dos archivos en `public/images/`: `.webp` (más liviana, la que
+usan casi todos los navegadores) y `.jpg` (respaldo). Se prepararon a partir de
+los archivos tal como llegaron, que se conservan en la carpeta
+`fotos-originales/` del proyecto —fuera de `public/`, así que no se publican—.
+A la foto de la clínica se le recortó el marco azul y los rótulos que ya traía
+impresos, para no duplicar la marca sobre el diseño del sitio.
+
+**Para cambiar una fotografía:**
+
+1. Copia la nueva imagen en `public/images/`.
+2. En `photos`, dentro de `src/data/business.ts`, escribe su ruta en `src` y
+   borra las líneas `webp`, `width` y `height` de esa foto (corresponden al
+   archivo anterior).
+3. Ajusta el texto `alt` describiendo lo que aparece en la imagen.
 
 ```ts
 hero: {
@@ -93,9 +107,8 @@ hero: {
 },
 ```
 
-Recomendación: horizontal de 1600 px de ancho o más para el hero; cuadradas de
-1000 px para el resto. Si una ruta no existe, el sitio vuelve a mostrar la
-composición gráfica en lugar de romperse.
+Si dejas `src` vacío —o si la ruta no existe— el sitio dibuja una composición
+con los colores de la marca en lugar de mostrar una imagen rota.
 
 ---
 
@@ -104,13 +117,31 @@ composición gráfica en lugar de romperse.
 1. **Dominio.** Cambia `seo.siteUrl` en `src/data/business.ts` por el dominio
    definitivo. De ahí salen la etiqueta canónica, los datos de Open Graph y la
    dirección de la imagen para compartir en redes.
-2. **Instagram.** Verifica que `instagram.handle` y `instagram.url` correspondan
-   al perfil vigente de la clínica.
-3. **Imagen para compartir.** `public/og-image.jpg` (1200×630) se generó con los
-   colores y la tipografía de la marca; puede reemplazarse por una fotografía
-   real del mismo tamaño.
+2. **Imagen para compartir.** `public/og-image.jpg` (1200×630) combina la
+   fotografía del hero con los colores y la tipografía de la marca. Se puede
+   reemplazar por otra imagen del mismo tamaño.
 
 ---
+
+## Paleta de color
+
+Los colores de la marca están definidos como variables en `src/index.css`
+(bloque `@theme`). Cambiar un valor ahí actualiza todo el sitio.
+
+| Token | Color | Uso |
+| --- | --- | --- |
+| `navy-900` | `#042C53` | Encabezado, pie de página, bloques oscuros |
+| `brand-600` | `#185FA5` | Botones, enlaces y acentos |
+| `brand-300` / `mist-300` | `#85B7EB` | Detalles sobre fondo oscuro, fondos suaves |
+| `cream-100` | `#F1EFE8` | Fondo general de la página |
+| `ink` | `#2C2C2A` | Texto principal |
+| `ink-muted` | `#5F5E5A` | Texto secundario |
+
+Los títulos usan el azul marino en lugar del azul principal porque sobre el
+fondo claro ofrecen mucho más contraste (13:1 frente a 5,7:1); el azul principal
+queda para botones, antetítulos, iconos y enlaces. Los estados de *hover* de los
+botones **oscurecen** el fondo en vez de aclararlo, para que el texto blanco
+nunca pierda legibilidad.
 
 ## Estructura
 
@@ -149,3 +180,9 @@ vite.config.ts        incluye el plugin que genera el SEO desde business.ts
 - **Movimiento moderado.** Las animaciones de entrada usan un único
   `IntersectionObserver` y se desactivan por completo si el sistema tiene
   activada la preferencia «reducir movimiento».
+- **Imágenes.** Cada fotografía se sirve en WebP con respaldo JPG, lleva `width`
+  y `height` para que no haya saltos de maquetación, y sólo la del hero se carga
+  de inmediato (además se precarga); las demás esperan a estar cerca de la
+  pantalla.
+- **Contraste verificado.** Se comprobó automáticamente el contraste de todo el
+  texto del sitio contra su fondo real: todo cumple el nivel AA de la WCAG.

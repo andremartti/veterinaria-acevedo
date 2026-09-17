@@ -5,7 +5,7 @@ import type { Photo as PhotoData } from '../../data/business';
 type PhotoProps = {
   photo: PhotoData;
   /** Estilo del panel de marca que se muestra si aún no hay fotografía. */
-  tone?: 'deep' | 'soft' | 'mint';
+  tone?: 'deep' | 'soft' | 'mist';
   seed?: 0 | 1 | 2;
   /** Motivo del panel de respaldo. */
   mark?: 'paw' | 'none';
@@ -28,21 +28,33 @@ export function Photo({
   className = '',
 }: PhotoProps) {
   const [failed, setFailed] = useState(false);
-  const showPanel = !photo.src || failed;
 
-  if (showPanel) {
+  if (!photo.src || failed) {
     return <BrandPanel tone={tone} seed={seed} mark={mark} className={className} />;
   }
 
-  return (
+  const image = (
     <img
       src={photo.src}
       alt={photo.alt}
+      width={photo.width}
+      height={photo.height}
       loading={priority ? 'eager' : 'lazy'}
       decoding={priority ? 'sync' : 'async'}
       fetchPriority={priority ? 'high' : 'auto'}
       onError={() => setFailed(true)}
+      style={photo.position ? { objectPosition: photo.position } : undefined}
       className={`h-full w-full object-cover ${className}`.trim()}
     />
+  );
+
+  /* WebP cuando el navegador lo admite; el JPG queda como respaldo universal. */
+  return photo.webp ? (
+    <picture className="block h-full w-full">
+      <source type="image/webp" srcSet={photo.webp} />
+      {image}
+    </picture>
+  ) : (
+    image
   );
 }

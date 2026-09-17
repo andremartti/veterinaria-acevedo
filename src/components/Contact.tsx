@@ -40,32 +40,32 @@ export function Contact() {
     <section
       id="contacto"
       aria-labelledby="contacto-titulo"
-      className="bg-sand-100 py-24 sm:py-28 lg:py-32"
+      className="bg-mist-50 py-24 sm:py-28 lg:py-32"
     >
       <div className="container-page">
         <Reveal>
-          <div className="grain relative isolate overflow-hidden rounded-[2rem] bg-forest-900 px-7 py-12 shadow-[var(--shadow-deep)] sm:rounded-[2.5rem] sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+          <div className="grain relative isolate overflow-hidden rounded-[2rem] bg-navy-900 px-7 py-12 shadow-[var(--shadow-deep)] sm:rounded-[2.5rem] sm:px-12 sm:py-16 lg:px-16 lg:py-20">
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute -top-32 -left-24 size-[30rem] rounded-full bg-jade-600/25 blur-3xl" />
-              <div className="absolute -right-24 -bottom-40 size-[26rem] rounded-full bg-jade-400/12 blur-3xl" />
+              <div className="absolute -top-32 -left-24 size-[30rem] rounded-full bg-brand-600/25 blur-3xl" />
+              <div className="absolute -right-24 -bottom-40 size-[26rem] rounded-full bg-brand-400/12 blur-3xl" />
             </div>
 
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 [&>*]:min-w-0">
               {/* ── Llamado a la acción ────────────────────────────────── */}
               <div>
-                <p className="flex items-center gap-2.5 text-[0.6875rem] font-bold tracking-[0.18em] text-jade-300 uppercase">
-                  <span aria-hidden="true" className="h-px w-6 bg-jade-300/50" />
+                <p className="flex items-center gap-2.5 text-[0.6875rem] font-bold tracking-[0.18em] text-brand-300 uppercase">
+                  <span aria-hidden="true" className="h-px w-6 bg-brand-300/50" />
                   Contacto
                 </p>
 
                 <h2
                   id="contacto-titulo"
-                  className="mt-4 text-[clamp(1.85rem,4.4vw,2.85rem)] leading-[1.12] font-semibold text-sand-50"
+                  className="mt-4 text-[clamp(1.85rem,4.4vw,2.85rem)] leading-[1.12] font-semibold text-cream-50"
                 >
                   ¿Necesitas atención para tu mascota?
                 </h2>
 
-                <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-mint-200/80">
+                <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-mist-200/80">
                   Contáctanos para conocer disponibilidad y agendar una consulta.
                 </p>
 
@@ -95,18 +95,18 @@ export function Contact() {
                     const isExternal = item.href ? /^https?:/.test(item.href) : false;
                     const content = (
                       <>
-                        <span className="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/8 text-jade-300 ring-1 ring-white/12 transition-colors duration-400 ease-[var(--ease-out-soft)] group-hover/item:bg-jade-500 group-hover/item:text-forest-950 sm:size-11">
+                        <span className="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-brand-300 ring-1 ring-white/12 transition-colors duration-400 ease-[var(--ease-out-soft)] group-hover/item:bg-brand-500 group-hover/item:text-navy-950 sm:size-11">
                           <Icon name={item.icon} size={20} />
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-[0.6875rem] font-bold tracking-[0.16em] text-mint-200/55 uppercase">
+                          <span className="block text-[0.6875rem] font-bold tracking-[0.16em] text-mist-200/75 uppercase">
                             {item.label}
                           </span>
-                          <span className="mt-1 block text-[0.9375rem] font-medium break-words text-sand-50 sm:text-[1.0625rem]">
+                          <span className="mt-1 block text-[0.9375rem] font-medium break-words text-cream-50 sm:text-[1.0625rem]">
                             {item.value}
                           </span>
                           {item.detail ? (
-                            <span className="mt-0.5 block text-[0.8125rem] text-mint-200/60">
+                            <span className="mt-0.5 block text-[0.8125rem] text-mist-200/75">
                               {item.detail}
                             </span>
                           ) : null}
@@ -115,7 +115,7 @@ export function Contact() {
                           <Icon
                             name="arrowUpRight"
                             size={18}
-                            className="mt-1 shrink-0 self-start text-white/25 transition-[color,transform] duration-400 ease-[var(--ease-out-soft)] group-hover/item:text-jade-300 motion-safe:group-hover/item:-translate-y-0.5"
+                            className="mt-1 shrink-0 self-start text-white/25 transition-[color,transform] duration-400 ease-[var(--ease-out-soft)] group-hover/item:text-brand-300 motion-safe:group-hover/item:-translate-y-0.5"
                           />
                         ) : null}
                       </>

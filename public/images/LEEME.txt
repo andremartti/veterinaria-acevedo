@@ -1,18 +1,28 @@
-Coloca aquí las fotografías de la clínica.
+Fotografías del sitio.
 
-Luego escribe la ruta en `photos`, dentro de src/data/business.ts. Por ejemplo,
-si guardas el archivo como `fachada.jpg`:
+De cada foto hay dos archivos: .webp (liviana, la que usan casi todos los
+navegadores) y .jpg (respaldo para navegadores antiguos).
 
-    hero: {
-      src: '/images/fachada.jpg',
-      alt: 'Fachada de Veterinaria Acevedo en Gastro Plaza',
-    },
+  hero-consulta        -> sección principal (hero)
+  revision-clinica     -> sección «Nosotros», imagen grande
+  veterinario-retrato  -> sección «Nosotros», retrato pequeño
+
+Los archivos tal como llegaron se conservan en la carpeta `fotos-originales/`
+del proyecto, fuera de `public/`, por lo que no se publican en el sitio.
+
+PARA CAMBIAR UNA FOTO
+  1. Copia la nueva imagen en esta carpeta.
+  2. Abre src/data/business.ts y, en el bloque `photos`, escribe su ruta en
+     `src` (por ejemplo '/images/fachada.jpg').
+  3. Borra las líneas `webp`, `width` y `height` de esa foto: corresponden al
+     archivo anterior.
+  4. Ajusta el texto `alt` describiendo lo que aparece en la imagen. Es lo que
+     leen los lectores de pantalla y lo que entiende Google.
 
 Recomendaciones
-  · Hero: horizontal, 1600 px de ancho o más.
-  · Resto: cuadradas, alrededor de 1000 x 1000 px.
-  · Formato JPG o WebP, comprimidas para web.
-  · Describe siempre la imagen en `alt`: ayuda a los lectores de pantalla y a Google.
+  · Hero: vertical u horizontal, 1200 px de ancho o más.
+  · Retrato: cuadrada, 640 px o más.
+  · Comprimidas para web (menos de 250 KB por archivo).
 
-Mientras no haya fotografías, el sitio muestra una composición con los colores
-de la marca, por lo que nunca aparecen imágenes rotas.
+Si dejas `src` vacío, el sitio dibuja una composición con los colores de la
+marca en lugar de mostrar una imagen rota.

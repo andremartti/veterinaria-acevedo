@@ -6,10 +6,10 @@ const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="grain relative isolate overflow-hidden bg-forest-950 text-mint-200/70">
+    <footer className="grain relative isolate overflow-hidden bg-navy-900 text-mist-200/80">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[36rem] -translate-x-1/2 rounded-full bg-jade-700/12 blur-3xl"
+        className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[36rem] -translate-x-1/2 rounded-full bg-brand-700/12 blur-3xl"
       />
 
       {/* El relleno inferior extra evita que la barra de acciones fija en
@@ -28,16 +28,16 @@ export function Footer() {
               href={business.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-white/15 px-4 py-2.5 text-[0.875rem] font-medium text-sand-50 transition-colors duration-300 hover:border-jade-400/50 hover:bg-white/5"
+              className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-white/15 px-4 py-2.5 text-[0.875rem] font-medium text-cream-50 transition-colors duration-300 hover:border-brand-400/50 hover:bg-white/5"
             >
-              <Icon name="instagram" size={17} className="text-jade-300" />
+              <Icon name="instagram" size={17} className="text-brand-300" />
               {business.instagram.handle}
             </a>
           </div>
 
           {/* Navegación */}
           <nav aria-label="Enlaces del pie de página" className="md:col-span-3 lg:col-span-3 lg:col-start-6">
-            <h2 className="text-[0.6875rem] font-bold tracking-[0.18em] text-jade-300 uppercase">
+            <h2 className="text-[0.6875rem] font-bold tracking-[0.18em] text-brand-300 uppercase">
               Navegación
             </h2>
             <ul className="mt-5 space-y-3">
@@ -45,7 +45,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-[0.9375rem] transition-colors duration-300 hover:text-sand-50"
+                    className="text-[0.9375rem] transition-colors duration-300 hover:text-cream-50"
                   >
                     {link.label}
                   </a>
@@ -56,17 +56,17 @@ export function Footer() {
 
           {/* Contacto */}
           <div className="md:col-span-4 lg:col-span-4">
-            <h2 className="text-[0.6875rem] font-bold tracking-[0.18em] text-jade-300 uppercase">
+            <h2 className="text-[0.6875rem] font-bold tracking-[0.18em] text-brand-300 uppercase">
               Datos de contacto
             </h2>
             <ul className="mt-5 space-y-4 text-[0.9375rem]">
               <li className="flex items-start gap-3">
-                <Icon name="pin" size={18} className="mt-0.5 shrink-0 text-jade-300/70" />
+                <Icon name="pin" size={18} className="mt-0.5 shrink-0 text-brand-300/70" />
                 <a
                   href={business.maps.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="leading-relaxed transition-colors duration-300 hover:text-sand-50"
+                  className="leading-relaxed transition-colors duration-300 hover:text-cream-50"
                 >
                   {business.address.venue}
                   <span className="block">{business.address.city}</span>
@@ -74,21 +74,21 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Icon name="phone" size={18} className="shrink-0 text-jade-300/70" />
+                <Icon name="phone" size={18} className="shrink-0 text-brand-300/70" />
                 <a
                   href={business.telHref}
-                  className="transition-colors duration-300 hover:text-sand-50"
+                  className="transition-colors duration-300 hover:text-cream-50"
                 >
                   {business.phone.display}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Icon name="whatsapp" size={18} className="shrink-0 text-jade-300/70" />
+                <Icon name="whatsapp" size={18} className="shrink-0 text-brand-300/70" />
                 <a
                   href={business.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors duration-300 hover:text-sand-50"
+                  className="transition-colors duration-300 hover:text-cream-50"
                 >
                   Escribir por WhatsApp
                 </a>
@@ -103,7 +103,7 @@ export function Footer() {
           </p>
           <a
             href="#inicio"
-            className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-sand-50/80 transition-colors duration-300 hover:text-sand-50"
+            className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-cream-50/80 transition-colors duration-300 hover:text-cream-50"
           >
             Volver arriba
             <Icon

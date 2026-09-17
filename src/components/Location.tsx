@@ -28,14 +28,14 @@ export function Location() {
             <Reveal delay={200}>
               <address className="mt-10 not-italic">
                 <div className="flex items-start gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mint-100 text-forest-800">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mist-100 text-navy-800">
                     <Icon name="pin" size={20} />
                   </span>
                   <div>
                     <p className="text-[0.6875rem] font-bold tracking-[0.16em] text-ink-muted uppercase">
                       Dirección
                     </p>
-                    <p className="mt-1.5 text-[1.0625rem] leading-relaxed font-medium text-forest-900">
+                    <p className="mt-1.5 text-[1.0625rem] leading-relaxed font-medium text-navy-900">
                       {business.address.venue}
                       <span className="block font-normal text-ink-soft">{business.address.city}</span>
                       <span className="block font-normal text-ink-soft">{business.address.country}</span>
@@ -43,8 +43,8 @@ export function Location() {
                   </div>
                 </div>
 
-                <div className="mt-7 flex items-start gap-4 border-t border-sand-200 pt-7">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mint-100 text-forest-800">
+                <div className="mt-7 flex items-start gap-4 border-t border-cream-200 pt-7">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mist-100 text-navy-800">
                     <Icon name="phone" size={20} />
                   </span>
                   <div>
@@ -53,15 +53,15 @@ export function Location() {
                     </p>
                     <a
                       href={business.telHref}
-                      className="mt-1.5 inline-block text-[1.0625rem] font-medium text-forest-900 transition-colors duration-300 hover:text-jade-600"
+                      className="mt-1.5 inline-block text-[1.0625rem] font-medium text-navy-900 transition-colors duration-300 hover:text-brand-600"
                     >
                       {business.phone.display}
                     </a>
                   </div>
                 </div>
 
-                <div className="mt-7 flex items-start gap-4 border-t border-sand-200 pt-7">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mint-100 text-forest-800">
+                <div className="mt-7 flex items-start gap-4 border-t border-cream-200 pt-7">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mist-100 text-navy-800">
                     <Icon name="clock" size={20} />
                   </span>
                   <div>
@@ -72,7 +72,7 @@ export function Location() {
                       <ul className="mt-1.5 space-y-1">
                         {business.hours.map((entry) => (
                           <li key={entry.days} className="text-[0.9375rem] text-ink-soft">
-                            <span className="font-medium text-forest-900">{entry.days}:</span>{' '}
+                            <span className="font-medium text-navy-900">{entry.days}:</span>{' '}
                             {entry.time}
                           </li>
                         ))}

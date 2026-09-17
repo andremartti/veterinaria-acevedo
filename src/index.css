@@ -48,38 +48,38 @@
    Sistema de diseño — paleta, tipografía y ritmo
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  /* Verde profundo — color principal de la marca */
-  --color-forest-950: #06201a;
-  --color-forest-900: #0a2c24;
-  --color-forest-800: #0f3b30;
-  --color-forest-700: #164c3e;
-  --color-forest-600: #1d6250;
+  /* Azul marino — encabezado, pie de página y bloques oscuros */
+  --color-navy-950: #021a33;
+  --color-navy-900: #042c53;
+  --color-navy-800: #06396b;
+  --color-navy-700: #0a4783;
+  --color-navy-600: #0e5596;
 
-  /* Jade — acentos, botones y detalles */
-  --color-jade-700: #1a7a5e;
-  --color-jade-600: #21906f;
-  --color-jade-500: #2aa47e;
-  --color-jade-400: #4cbd98;
-  --color-jade-300: #7fd4b7;
+  /* Azul principal — botones, enlaces y acentos */
+  --color-brand-700: #124a83;
+  --color-brand-600: #185fa5;
+  --color-brand-500: #2374c5;
+  --color-brand-400: #4f96dd;
+  --color-brand-300: #85b7eb;
 
-  /* Menta suave — fondos y superficies frescas */
-  --color-mint-50: #f4faf7;
-  --color-mint-100: #e6f4ed;
-  --color-mint-200: #cfe9dd;
-  --color-mint-300: #aed8c6;
+  /* Azul cielo — fondos suaves y tarjetas */
+  --color-mist-50: #f3f8fd;
+  --color-mist-100: #e5f0fb;
+  --color-mist-200: #c5ddf5;
+  --color-mist-300: #85b7eb;
 
-  /* Neutros cálidos — fondos, bordes y texto secundario */
-  --color-sand-50: #fcfaf6;
-  --color-sand-100: #f6f1e8;
-  --color-sand-200: #ebe3d6;
-  --color-sand-300: #dbd0bd;
-  --color-sand-500: #a1927c;
-  --color-sand-700: #6b5f4e;
+  /* Neutros cálidos — fondo general, bordes y texto secundario */
+  --color-cream-50: #faf9f5;
+  --color-cream-100: #f1efe8;
+  --color-cream-200: #e3e0d7;
+  --color-cream-300: #d1cdc0;
+  --color-cream-500: #8e8a80;
+  --color-cream-700: #63615a;
 
-  /* Tinta — texto principal */
-  --color-ink: #14201b;
-  --color-ink-soft: #3d504a;
-  --color-ink-muted: #63776f;
+  /* Tinta — texto principal y secundario */
+  --color-ink: #2c2c2a;
+  --color-ink-soft: #46453f;
+  --color-ink-muted: #5f5e5a;
 
   --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
@@ -88,9 +88,9 @@
   --radius-card: 1.5rem;
   --radius-xl2: 2rem;
 
-  --shadow-soft: 0 1px 2px rgb(20 32 27 / 0.04), 0 8px 24px -12px rgb(20 32 27 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(20 32 27 / 0.05), 0 24px 48px -20px rgb(20 32 27 / 0.22);
-  --shadow-deep: 0 32px 64px -28px rgb(6 32 26 / 0.45);
+  --shadow-soft: 0 1px 2px rgb(4 44 83 / 0.05), 0 8px 24px -12px rgb(4 44 83 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(4 44 83 / 0.06), 0 24px 48px -20px rgb(4 44 83 / 0.26);
+  --shadow-deep: 0 32px 64px -28px rgb(2 26 51 / 0.5);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -124,7 +124,7 @@
 
   body {
     margin: 0;
-    background-color: var(--color-sand-50);
+    background-color: var(--color-cream-100);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-synthesis-weight: none;
@@ -142,7 +142,7 @@
     font-optical-sizing: auto;
     letter-spacing: -0.02em;
     text-wrap: balance;
-    color: var(--color-forest-900);
+    color: var(--color-navy-900);
   }
 
   p {
@@ -157,14 +157,14 @@
 
   /* Foco visible y consistente en todo el sitio */
   :focus-visible {
-    outline: 2px solid var(--color-jade-600);
+    outline: 2px solid var(--color-brand-600);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
   ::selection {
-    background-color: var(--color-jade-300);
-    color: var(--color-forest-950);
+    background-color: var(--color-brand-300);
+    color: var(--color-navy-950);
   }
 
   img,

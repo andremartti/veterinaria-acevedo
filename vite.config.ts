@@ -1,7 +1,7 @@
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { business } from './src/data/business';
+import { business, photos } from './src/data/business';
 
 /**
  * Genera las etiquetas de SEO y los datos estructurados a partir de la
@@ -47,12 +47,31 @@ function seoTags(): Plugin {
     injectTo: 'head' as const,
   });
 
+  /* La foto del hero es el elemento más grande de la primera pantalla:
+     precargarla mejora el tiempo de renderizado percibido. */
+  const heroPreload = photos.hero.webp || photos.hero.src;
+
   return {
     name: 'veterinaria-seo-tags',
     transformIndexHtml(html) {
       return {
         html: html.replace('%SEO_TITLE%', seo.title),
         tags: [
+          ...(heroPreload
+            ? [
+                {
+                  tag: 'link',
+                  attrs: {
+                    rel: 'preload',
+                    as: 'image',
+                    href: heroPreload,
+                    type: heroPreload.endsWith('.webp') ? 'image/webp' : undefined,
+                    fetchpriority: 'high',
+                  },
+                  injectTo: 'head' as const,
+                },
+              ]
+            : []),
           meta({ name: 'description', content: seo.description }),
           meta({ name: 'robots', content: 'index, follow' }),
           meta({ name: 'author', content: business.name }),

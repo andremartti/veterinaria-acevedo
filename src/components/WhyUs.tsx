@@ -8,11 +8,11 @@ export function WhyUs() {
   return (
     <section
       aria-labelledby="porque-titulo"
-      className="grain relative isolate overflow-hidden bg-forest-900 py-24 sm:py-28 lg:py-36"
+      className="grain relative isolate overflow-hidden bg-navy-950 py-24 sm:py-28 lg:py-36"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 -left-24 size-[32rem] rounded-full bg-jade-600/20 blur-3xl" />
-        <div className="absolute -right-32 -bottom-32 size-[28rem] rounded-full bg-forest-600/30 blur-3xl" />
+        <div className="absolute -top-24 -left-24 size-[32rem] rounded-full bg-brand-600/20 blur-3xl" />
+        <div className="absolute -right-32 -bottom-32 size-[28rem] rounded-full bg-navy-600/30 blur-3xl" />
       </div>
 
       <div className="container-page">
@@ -43,20 +43,20 @@ export function WhyUs() {
               {advantages.map((advantage, index) => (
                 <Reveal as="li" key={advantage.title} delay={index * 110}>
                   <div className="group/row flex items-start gap-5 py-7 sm:gap-7 sm:py-8">
-                    <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/8 text-jade-300 ring-1 ring-white/12 transition-colors duration-500 ease-[var(--ease-out-soft)] group-hover/row:bg-jade-500 group-hover/row:text-forest-950 group-hover/row:ring-jade-400/40 sm:size-14">
+                    <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-brand-300 ring-1 ring-white/12 transition-colors duration-500 ease-[var(--ease-out-soft)] group-hover/row:bg-brand-500 group-hover/row:text-navy-950 group-hover/row:ring-brand-400/40 sm:size-14">
                       <Icon name={advantage.icon} size={24} />
                     </span>
                     <div>
-                      <h3 className="text-[1.1875rem] font-semibold text-sand-50 sm:text-xl">
+                      <h3 className="text-[1.1875rem] font-semibold text-cream-50 sm:text-xl">
                         {advantage.title}
                       </h3>
-                      <p className="mt-2.5 max-w-lg text-[0.9375rem] leading-relaxed text-mint-200/75">
+                      <p className="mt-2.5 max-w-lg text-[0.9375rem] leading-relaxed text-mist-200/85">
                         {advantage.description}
                       </p>
                     </div>
                     <span
                       aria-hidden="true"
-                      className="font-display ml-auto hidden self-center text-[1.75rem] leading-none font-semibold text-white/12 transition-colors duration-500 ease-[var(--ease-out-soft)] group-hover/row:text-jade-300/50 sm:block"
+                      className="font-display ml-auto hidden self-center text-[1.75rem] leading-none font-semibold text-white/20 transition-colors duration-500 ease-[var(--ease-out-soft)] group-hover/row:text-brand-300/60 sm:block"
                     >
                       {String(index + 1).padStart(2, '0')}
                     </span>

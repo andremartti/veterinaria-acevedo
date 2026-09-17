@@ -1,7 +1,14 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import { Icon, type IconName } from './Icon';
 
-type Variant = 'primary' | 'accent' | 'outline' | 'ghost' | 'onDark' | 'onDarkGhost';
+type Variant =
+  | 'primary'
+  | 'accent'
+  | 'outline'
+  | 'ghost'
+  | 'ghostOnDark'
+  | 'onDark'
+  | 'onDarkGhost';
 type Size = 'sm' | 'md' | 'lg';
 
 const base =
@@ -11,17 +18,20 @@ const base =
   'active:translate-y-0 active:duration-75 motion-safe:hover:-translate-y-0.5';
 
 const variants: Record<Variant, string> = {
+  /* Los estados de hover oscurecen el fondo: así el texto blanco conserva
+     siempre contraste suficiente. */
   primary:
-    'bg-forest-800 text-sand-50 shadow-[var(--shadow-soft)] hover:bg-forest-700 hover:shadow-[var(--shadow-lift)]',
+    'bg-brand-600 text-white shadow-[var(--shadow-soft)] hover:bg-brand-700 hover:shadow-[var(--shadow-lift)]',
   accent:
-    'bg-jade-600 text-white shadow-[var(--shadow-soft)] hover:bg-jade-500 hover:shadow-[var(--shadow-lift)]',
+    'bg-brand-500 text-white shadow-[var(--shadow-soft)] hover:bg-brand-600 hover:shadow-[var(--shadow-lift)]',
   outline:
-    'border border-forest-800/15 bg-white/80 text-forest-900 backdrop-blur-sm hover:border-forest-800/30 hover:bg-white hover:shadow-[var(--shadow-soft)]',
-  ghost: 'text-forest-800 hover:bg-forest-800/6',
+    'border border-navy-900/15 bg-white/80 text-navy-900 backdrop-blur-sm hover:border-navy-900/30 hover:bg-white hover:shadow-[var(--shadow-soft)]',
+  ghost: 'text-navy-800 hover:bg-navy-900/6',
+  ghostOnDark: 'text-mist-100 hover:bg-white/10',
   onDark:
-    'bg-sand-50 text-forest-900 shadow-[var(--shadow-soft)] hover:bg-white hover:shadow-[var(--shadow-lift)]',
+    'bg-cream-50 text-navy-900 shadow-[var(--shadow-soft)] hover:bg-white hover:shadow-[var(--shadow-lift)]',
   onDarkGhost:
-    'border border-white/25 text-sand-50 hover:border-white/50 hover:bg-white/10',
+    'border border-white/30 text-cream-50 hover:border-white/60 hover:bg-white/10',
 };
 
 const sizes: Record<Size, string> = {
