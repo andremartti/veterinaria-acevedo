@@ -155,8 +155,8 @@ src/
   components/
     Navbar  Hero  About  Services  WhyUs  TrustSection
     Location  Contact  Footer  MobileActionBar
-    ui/  Button · Icon · Logo · Photo · BrandPanel · MapCard
-         SectionHeading · Stars · Reveal
+    ui/  Button · Icon · Logo · LogoMark · Photo · BrandPanel
+         MapCard · SectionHeading · Stars · Reveal
   hooks/useReveal.ts  animaciones de entrada al hacer scroll
   index.css           paleta, tipografía y utilidades del sistema de diseño
   lib/basePath.ts     resuelve las rutas si el sitio vive en una subcarpeta
@@ -178,6 +178,13 @@ vite.config.ts        incluye el plugin que genera el SEO desde business.ts
 - **Mapa bajo demanda.** La sección Ubicación muestra un mapa ilustrado y sólo
   carga el mapa de Google cuando el visitante pulsa «Ver mapa interactivo»: la
   página abre más rápido y no se cargan recursos de terceros sin necesidad.
+- **Logotipo vectorial.** El logotipo de la clínica está redibujado en SVG
+  (`ui/LogoMark.tsx`) a partir del original, que sólo existía en 206 px. Al ser
+  vectorial se ve nítido en cualquier tamaño, desde el favicon hasta impresión.
+  Toma el color del contenedor, así que funciona en azul sobre fondo claro y en
+  blanco sobre el azul marino. En la barra de navegación se usa la versión sin
+  el texto circular —a 44 px no se leería— junto al nombre en tipografía; el
+  sello completo aparece en el pie, donde sí hay tamaño para leerlo.
 - **Tipografías propias.** Fraunces y Plus Jakarta Sans se sirven desde el mismo
   sitio, con precarga, para evitar saltos de texto y peticiones externas.
 - **Movimiento moderado.** Las animaciones de entrada usan un único

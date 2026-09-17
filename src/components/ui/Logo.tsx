@@ -1,29 +1,38 @@
-import { Icon } from './Icon';
+import { LogoMark } from './LogoMark';
 import { business } from '../../data/business';
 
 type LogoProps = {
   tone?: 'light' | 'dark';
+  /**
+   * `lockup` combina el símbolo con el nombre en tipografía: se lee bien en
+   * tamaños pequeños, como la barra de navegación.
+   * `badge` muestra el sello completo de la clínica, con su texto circular.
+   * Sólo conviene a partir de unos 80 px.
+   */
+  variant?: 'lockup' | 'badge';
   className?: string;
 };
 
-/**
- * Lockup de marca: símbolo + nombre en dos niveles.
- * `tone="dark"` se usa sobre fondos oscuros (pie de página, menú móvil).
- */
-export function Logo({ tone = 'light', className = '' }: LogoProps) {
+/** Marca de Veterinaria Acevedo. */
+export function Logo({ tone = 'light', variant = 'lockup', className = '' }: LogoProps) {
   const isDark = tone === 'dark';
+  const colorClass = isDark ? 'text-white' : 'text-brand-600';
   const [first, ...restName] = business.name.split(' ');
+
+  if (variant === 'badge') {
+    return (
+      <LogoMark
+        className={`size-24 shrink-0 transition-colors duration-500 ${colorClass} ${className}`.trim()}
+      />
+    );
+  }
 
   return (
     <span className={`flex items-center gap-3 ${className}`.trim()}>
-      <span
-        aria-hidden="true"
-        className={`grid size-11 shrink-0 place-items-center rounded-[0.9rem] bg-gradient-to-br shadow-[var(--shadow-soft)] transition-colors duration-500 ${
-          isDark ? 'from-brand-400 to-brand-600 text-navy-950' : 'from-navy-700 to-navy-900 text-mist-100'
-        }`}
-      >
-        <Icon name="paw" size={22} />
-      </span>
+      <LogoMark
+        withText={false}
+        className={`size-11 shrink-0 transition-colors duration-500 ${colorClass}`}
+      />
       <span className="flex flex-col leading-none">
         <span
           className={`text-[0.6rem] font-bold tracking-[0.22em] uppercase transition-colors duration-500 ${

@@ -108,7 +108,9 @@ export const business = {
    *     { days: 'Sábado',          time: '8:00 a. m. – 12:00 m.' },
    *   ],
    * ----------------------------------------------------------------------- */
-  hours: [] as { days: string; time: string }[], // ✏️ EDITABLE
+  hours: [
+    { days: 'Todos los días', time: '9:00 a. m. – 8:00 p. m.' }, // ✏️ EDITABLE
+  ] as { days: string; time: string }[],
 
   /* ── SEO ───────────────────────────────────────────────────────────────── */
   seo: {
@@ -146,13 +148,13 @@ export const services: Service[] = [
     icon: 'stethoscope',
     title: 'Consulta veterinaria',
     description:
-      'Atención personalizada para perros y gatos, con tiempo para escuchar y revisar con calma a cada paciente.',
+      'Atención personalizada para perros y gatos, con el cuidado necesario para atender a cada paciente.',
   },
   {
     icon: 'shield',
     title: 'Medicina preventiva',
     description:
-      'Acompañamiento para mantener la salud de tu mascota y anticiparse a los problemas antes de que aparezcan.',
+      'Acompañamiento para mantener la salud de tu mascota y prevenir patologías antes de que aparezcan.',
   },
   {
     icon: 'heart',
@@ -164,7 +166,7 @@ export const services: Service[] = [
     icon: 'chat',
     title: 'Orientación para propietarios',
     description:
-      'Resolvemos tus dudas y te explicamos cada paso, para que tomes decisiones informadas sobre tu mascota.',
+      'Aclaramos tus dudas y te explicamos cada paso, para que tomes decisiones informadas sobre tu mascota.',
   },
 ];
 

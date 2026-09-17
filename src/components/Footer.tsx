@@ -18,7 +18,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
           {/* Marca */}
           <div className="md:col-span-5 lg:col-span-4">
-            <Logo tone="dark" />
+            <Logo tone="dark" variant="badge" />
             <p className="mt-6 max-w-xs text-[0.9375rem] leading-relaxed">
               {business.legalName}. Atención veterinaria y cuidado integral de mascotas en{' '}
               {business.address.locality}, {business.address.country}.
