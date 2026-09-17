@@ -1,0 +1,68 @@
+# Publica el sitio en GitHub Pages en cada envío a la rama principal.
+#
+# Requisito, una sola vez: en el repositorio, Settings → Pages →
+# «Build and deployment» → Source: «GitHub Actions».
+#
+# La ruta base y la dirección pública se toman de la propia configuración de
+# Pages, así que este archivo sigue funcionando aunque el repositorio cambie de
+# nombre o se le asigne un dominio propio.
+
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [claude/veterinaria-acevedo-website-7w9tlf]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    name: Construir el sitio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Leer la configuración de Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar
+        run: npm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+
+      - name: Subir el resultado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  desplegar:
+    name: Desplegar
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.desplegar.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: desplegar
+        uses: actions/deploy-pages@v4

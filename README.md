@@ -159,7 +159,10 @@ src/
          SectionHeading · Stars · Reveal
   hooks/useReveal.ts  animaciones de entrada al hacer scroll
   index.css           paleta, tipografía y utilidades del sistema de diseño
+  lib/basePath.ts     resuelve las rutas si el sitio vive en una subcarpeta
 vite.config.ts        incluye el plugin que genera el SEO desde business.ts
+.github/workflows/
+  deploy.yml          publica el sitio en GitHub Pages
 ```
 
 ### Decisiones de implementación
@@ -186,3 +189,6 @@ vite.config.ts        incluye el plugin que genera el SEO desde business.ts
   pantalla.
 - **Contraste verificado.** Se comprobó automáticamente el contraste de todo el
   texto del sitio contra su fondo real: todo cumple el nivel AA de la WCAG.
+- **Funciona en subcarpeta.** Las rutas de imágenes, fuentes y recursos se
+  resuelven a partir de la base del sitio, de modo que el mismo código sirve
+  tanto en un dominio propio como en `usuario.github.io/repositorio/`.

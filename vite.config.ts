@@ -4,13 +4,26 @@ import tailwindcss from '@tailwindcss/vite';
 import { business, photos } from './src/data/business';
 
 /**
+ * Subcarpeta desde la que se sirve el sitio. En un dominio propio es `/`;
+ * GitHub Pages publica en `/nombre-del-repositorio/`, y el flujo de despliegue
+ * (.github/workflows/deploy.yml) pasa ese valor en `BASE_PATH`.
+ */
+const basePath = `/${(process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '')}/`.replace(
+  '//',
+  '/',
+);
+
+/** Dirección pública definitiva. `SITE_URL` la sobrescribe al desplegar. */
+const siteUrl = (process.env.SITE_URL || business.seo.siteUrl).replace(/\/$/, '');
+
+/**
  * Genera las etiquetas de SEO y los datos estructurados a partir de la
  * información del negocio, de modo que editar `src/data/business.ts` baste
  * para mantener todo sincronizado.
  */
 function seoTags(): Plugin {
   const { seo, address, reviews, instagram, maps } = business;
-  const ogImage = `${seo.siteUrl.replace(/\/$/, '')}/og-image.jpg`;
+  const ogImage = `${siteUrl}/og-image.jpg`;
 
   /* Sólo se declaran datos verificables del perfil público del negocio. */
   const structuredData = {
@@ -19,7 +32,7 @@ function seoTags(): Plugin {
     name: business.name,
     alternateName: business.legalName,
     description: seo.description,
-    url: seo.siteUrl,
+    url: siteUrl,
     telephone: business.phone.dial,
     image: ogImage,
     address: {
@@ -49,7 +62,8 @@ function seoTags(): Plugin {
 
   /* La foto del hero es el elemento más grande de la primera pantalla:
      precargarla mejora el tiempo de renderizado percibido. */
-  const heroPreload = photos.hero.webp || photos.hero.src;
+  const hero = photos.hero.webp || photos.hero.src;
+  const heroPreload = hero ? basePath.replace(/\/$/, '') + hero : '';
 
   return {
     name: 'veterinaria-seo-tags',
@@ -77,7 +91,7 @@ function seoTags(): Plugin {
           meta({ name: 'author', content: business.name }),
           {
             tag: 'link',
-            attrs: { rel: 'canonical', href: seo.siteUrl },
+            attrs: { rel: 'canonical', href: siteUrl },
             injectTo: 'head' as const,
           },
 
@@ -85,7 +99,7 @@ function seoTags(): Plugin {
           meta({ property: 'og:site_name', content: business.name }),
           meta({ property: 'og:title', content: seo.title }),
           meta({ property: 'og:description', content: seo.description }),
-          meta({ property: 'og:url', content: seo.siteUrl }),
+          meta({ property: 'og:url', content: siteUrl }),
           meta({ property: 'og:locale', content: 'es_HN' }),
           meta({ property: 'og:image', content: ogImage }),
           meta({ property: 'og:image:width', content: '1200' }),
@@ -113,6 +127,7 @@ function seoTags(): Plugin {
 }
 
 export default defineConfig({
+  base: basePath,
   plugins: [react(), tailwindcss(), seoTags()],
   build: {
     target: 'es2020',

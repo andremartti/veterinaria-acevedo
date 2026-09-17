@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrandPanel } from './BrandPanel';
+import { withBase } from '../../lib/basePath';
 import type { Photo as PhotoData } from '../../data/business';
 
 type PhotoProps = {
@@ -35,7 +36,7 @@ export function Photo({
 
   const image = (
     <img
-      src={photo.src}
+      src={withBase(photo.src)}
       alt={photo.alt}
       width={photo.width}
       height={photo.height}
@@ -51,7 +52,7 @@ export function Photo({
   /* WebP cuando el navegador lo admite; el JPG queda como respaldo universal. */
   return photo.webp ? (
     <picture className="block h-full w-full">
-      <source type="image/webp" srcSet={photo.webp} />
+      <source type="image/webp" srcSet={withBase(photo.webp)} />
       {image}
     </picture>
   ) : (
